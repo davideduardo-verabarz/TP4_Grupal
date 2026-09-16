@@ -9,16 +9,16 @@ import java.util.HashSet;
  *
  * @author Keke
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class DesktopPaneEscritorio extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewJFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DesktopPaneEscritorio.class.getName());
 
     /**
      * Creates new form NewJFrame
      */
     private static HashSet<Alumno> listaAlumnos;
     private static HashSet<Materia> listaMaterias;
-    public NewJFrame() {
+    public DesktopPaneEscritorio() {
         initComponents();
         listaAlumnos = new HashSet<>();
         listaMaterias = new HashSet<>();
@@ -104,7 +104,9 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuAgrAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgrAlumActionPerformed
-        // TODO add your handling code here:
+        InternalFrameMenuAlumno verAlumnos = new InternalFrameMenuAlumno();
+        escritorio.add(verAlumnos);
+        verAlumnos.setVisible(true);
     }//GEN-LAST:event_jMenuAgrAlumActionPerformed
 
     /**
@@ -129,7 +131,7 @@ public class NewJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new NewJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new DesktopPaneEscritorio().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
