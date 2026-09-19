@@ -42,6 +42,7 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         jMenuRegistro = new javax.swing.JMenu();
         jMenuItemInscripcion = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenu();
+        jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,11 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         jMenuBar1.add(jMenuRegistro);
 
         jMenuSalir.setText("Salir");
+
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(this::jMenuItemSalirActionPerformed);
+        jMenuSalir.add(jMenuItemSalir);
+
         jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -127,6 +133,11 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         verInscripcion.setVisible(true);
     }//GEN-LAST:event_jMenuItemInscripcionActionPerformed
 
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,6 +170,7 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemAgrMateria;
     private javax.swing.JMenuItem jMenuItemInscripcion;
+    private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JMenu jMenuMateria;
     private javax.swing.JMenu jMenuRegistro;
     private javax.swing.JMenu jMenuSalir;
