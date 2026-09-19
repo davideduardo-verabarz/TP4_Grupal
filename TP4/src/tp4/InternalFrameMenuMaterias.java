@@ -4,17 +4,22 @@
  */
 package tp4;
 
+import java.util.HashSet;
+import javax.swing.JOptionPane; //Para confirmar que funcionan las acciones
+
 /**
  *
  * @author Keke
  */
 public class InternalFrameMenuMaterias extends javax.swing.JInternalFrame {
 
+    private HashSet<Materia> listaMaterias;
     /**
      * Creates new form InternalFrameMenuAlumno
      */
-    public InternalFrameMenuMaterias() {
+    public InternalFrameMenuMaterias(HashSet<Materia> listaMaterias) {
         initComponents();
+        this.listaMaterias = listaMaterias;
     }
 
     /**
@@ -54,8 +59,10 @@ public class InternalFrameMenuMaterias extends javax.swing.JInternalFrame {
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(this::btnNuevoActionPerformed);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("FORMULARIO DE MATERIAS");
@@ -84,14 +91,14 @@ public class InternalFrameMenuMaterias extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(textAñoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(textAñoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(txtCodMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,8 +155,26 @@ public class InternalFrameMenuMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textAñoMatActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        int codigo = Integer.parseInt(txtCodMateria.getText());
+        String nombre = txtMateria.getText();
+        int año = Integer.parseInt(textAñoMat.getText());
+
+        Materia materia = new Materia(codigo, nombre, año);
+
+        listaMaterias.add(materia);
+        JOptionPane.showMessageDialog(this, "Materia cargada correctamente.");
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        txtCodMateria.setText("");
+        txtMateria.setText("");
+        textAñoMat.setText("");
+        //Limpia los campos para poder cargar nuevos datos
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

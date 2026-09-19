@@ -8,7 +8,7 @@ public class Colegio {
         Materia Lab = new Materia(3, "Laboratorio 1", 1);
         
         Alumno alumno1 = new Alumno(1001, "Lopez", "Martin");
-        Alumno alumno2 = new Alumno(1002, "Matrinez", "Brenda");
+        Alumno alumno2 = new Alumno(1002, "Martinez", "Brenda");
         
         alumno1.agregarMateria(Lab);
         alumno1.agregarMateria(Web2);

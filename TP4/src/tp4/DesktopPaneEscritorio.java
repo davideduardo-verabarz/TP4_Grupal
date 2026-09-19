@@ -67,6 +67,7 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         jMenuMateria.setText("Materia");
 
         jMenuItemAgrMateria.setText("Agregar Materias");
+        jMenuItemAgrMateria.addActionListener(this::jMenuItemAgrMateriaActionPerformed);
         jMenuMateria.add(jMenuItemAgrMateria);
 
         jMenuBar1.add(jMenuMateria);
@@ -108,6 +109,14 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         escritorio.add(verAlumnos);
         verAlumnos.setVisible(true);
     }//GEN-LAST:event_jMenuAgrAlumActionPerformed
+
+    private void jMenuItemAgrMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgrMateriaActionPerformed
+        // TODO add your handling code here:
+        
+        InternalFrameMenuMaterias verMaterias = new InternalFrameMenuMaterias(listaMaterias);
+        escritorio.add(verMaterias);
+        verMaterias.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgrMateriaActionPerformed
 
     /**
      * @param args the command line arguments
