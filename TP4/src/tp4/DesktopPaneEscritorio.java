@@ -39,8 +39,8 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         jMenuAgrAlum = new javax.swing.JMenuItem();
         jMenuMateria = new javax.swing.JMenu();
         jMenuItemAgrMateria = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuRegistro = new javax.swing.JMenu();
+        jMenuItemInscripcion = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,11 +49,11 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 528, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 361, Short.MAX_VALUE)
         );
 
         jMenuAlumno.setText("Alumno");
@@ -72,12 +72,13 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuMateria);
 
-        jMenu3.setText("Registro");
+        jMenuRegistro.setText("Registro");
 
-        jMenuItem3.setText("Vista Inscripcion");
-        jMenu3.add(jMenuItem3);
+        jMenuItemInscripcion.setText("Vista Inscripcion");
+        jMenuItemInscripcion.addActionListener(this::jMenuItemInscripcionActionPerformed);
+        jMenuRegistro.add(jMenuItemInscripcion);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuRegistro);
 
         jMenuSalir.setText("Salir");
         jMenuBar1.add(jMenuSalir);
@@ -105,7 +106,7 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuAgrAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgrAlumActionPerformed
-        InternalFrameMenuAlumno verAlumnos = new InternalFrameMenuAlumno();
+        InternalFrameMenuAlumno verAlumnos = new InternalFrameMenuAlumno(listaAlumnos);
         escritorio.add(verAlumnos);
         verAlumnos.setVisible(true);
     }//GEN-LAST:event_jMenuAgrAlumActionPerformed
@@ -117,6 +118,14 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
         escritorio.add(verMaterias);
         verMaterias.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgrMateriaActionPerformed
+
+    private void jMenuItemInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInscripcionActionPerformed
+        // TODO add your handling code here:
+        InternalFrameMenuInscripcion verInscripcion = new InternalFrameMenuInscripcion(listaAlumnos, listaMaterias);
+
+        escritorio.add(verInscripcion);
+        verInscripcion.setVisible(true);
+    }//GEN-LAST:event_jMenuItemInscripcionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,13 +154,13 @@ public class DesktopPaneEscritorio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuAgrAlum;
     private javax.swing.JMenu jMenuAlumno;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAgrMateria;
+    private javax.swing.JMenuItem jMenuItemInscripcion;
     private javax.swing.JMenu jMenuMateria;
+    private javax.swing.JMenu jMenuRegistro;
     private javax.swing.JMenu jMenuSalir;
     // End of variables declaration//GEN-END:variables
 }

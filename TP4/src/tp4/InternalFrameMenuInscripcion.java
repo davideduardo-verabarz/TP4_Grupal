@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package tp4;
+import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +12,22 @@ package tp4;
  */
 public class InternalFrameMenuInscripcion extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form InternalFrameMenuAlumno
-     */
-    public InternalFrameMenuInscripcion() {
+    private HashSet<Alumno> listaAlumnos;
+    private HashSet<Materia> listaMaterias;
+    
+    public InternalFrameMenuInscripcion(HashSet <Alumno>listaAlumno,HashSet<Materia>listaMaterias) {
         initComponents();
+        this.listaAlumnos = listaAlumno;
+        this.listaMaterias= listaMaterias;
+        
+        for (Materia m:listaMaterias) {
+            comboMateria.addItem(m.getNombre());
+            }
+
+        for (Alumno a:listaAlumnos) {
+            comboAlumno.addItem(a.getApellido()+" "+a.getNombre());
+        }
+        
     }
 
     /**
@@ -49,6 +62,7 @@ public class InternalFrameMenuInscripcion extends javax.swing.JInternalFrame {
         btnInscribir.addActionListener(this::btnInscribirActionPerformed);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,8 +139,28 @@ public class InternalFrameMenuInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_comboMateriaActionPerformed
 
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
-        // TODO add your handling code here:
+        for (Alumno a : listaAlumnos) {
+    String alumnoSeleccionado = a.getApellido() + " " + a.getNombre();
+
+    if(alumnoSeleccionado.equals(comboAlumno.getSelectedItem())) 
+    {
+        for(Materia m:listaMaterias) 
+        {
+            if(m.getNombre().equals(comboMateria.getSelectedItem())) 
+            {
+                a.agregarMateria(m);
+                JOptionPane.showMessageDialog(this,"Alumno inscripto correctamente.");
+                return;
+            }
+        }
+    }
+}
     }//GEN-LAST:event_btnInscribirActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
